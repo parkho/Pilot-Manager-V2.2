@@ -23,20 +23,15 @@ class Pilotmanager extends CodonModule
                 }
 
                 $params = array(
-                    'code' => $this->post->code, 
                     'firstname' => $this->post->firstname, 
                     'lastname' => $this->post->lastname, 
                     'email' => $this->post->email, 
-                    'location' => $this->post->location, 
                     'hub' => $this->post->hub, 
                     'retired' => $this->post->retired, 
-                    'totalhours' => $this->post->totalhours, 
                     'totalflights' => $this->post->totalflights, 
                     'totalpay' => floatval($this->post->totalpay), 
-                    'payadjust' => floatval($this->post->payadjust), 
                     'transferhours' => $this->post->transferhours, 
-                    'comment' => $this->post->comment, 
-                );
+                   );
 
                 PilotData::updateProfile($this->post->pilotid, $params);
                 PilotData::SaveFields($this->post->pilotid, $_POST);
@@ -53,7 +48,7 @@ class Pilotmanager extends CodonModule
                 $this->set('message', 'Profile updated successfully');
                 $this->render('core_success.tpl');
                 $this->set('pilots', PilotData::getAllPilots());
-           	$this->render('/pm/pilot_manager.php');
+				$this->render('/pm/pilot_manager.php');
                 
                 if($this->post->resend_email == 'true') {
                     $this->post->id = $this->post->pilotid;
