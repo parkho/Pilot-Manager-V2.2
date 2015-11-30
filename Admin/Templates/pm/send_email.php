@@ -23,19 +23,14 @@ foreach($pilots as $pilot)
 			$ptme = strtotime($pilot->lastpirep);
 			$dtme = strtotime($param->datesent);
 			$chk = date("Y", $dtme);
-			$chk1 = date("Y", $ptme);
-			$thrd = date("m-d", $dtme);
-			$trd = date("d", $ptme);
-			$dte = date("d");
-			$res = $dte - $trd;
 ?>
 		<tr>
 			<td><?php echo $pilot->firstname.' '.$pilot->lastname ;?></td>
 			<td>
 			<?php 
-			if($chk1 == "-0001")
+			if($pilot->lastpirep == 0)
 			{
-				echo ' None ';
+				echo ' <font color="red">None</font> ';
 			}
 			else
 			{
@@ -45,7 +40,7 @@ foreach($pilots as $pilot)
 			</td>
 			<td>
 			<?php 
-			if($chk == "-0001")
+			if($param->datesent == 0)
 			{
 				echo ' None ';
 			}
