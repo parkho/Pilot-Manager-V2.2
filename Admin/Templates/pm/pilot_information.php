@@ -16,15 +16,13 @@ td{
 		<td><b>Status</b></td> 
 	</tr>
 <?php
+			$days = Config::Get('PILOT_INACTIVE_TIME');
 foreach($pilots as $pilot)
 	{
 			$pid = $pilot->pilotid;
 			$param = PManagerData::param($pid);
 			$jtme = strtotime($pilot->joindate);
 			$ptme = strtotime($pilot->lastpirep);
-			$dtme = strtotime($param->datesent);
-			$chk = date("Y", $dtme);
-			$thrd = date("m-d", $dtme);
 			$trd = date("d", $ptme);
 			$dte = date("d");
 			$res = $dte - $trd;
@@ -46,9 +44,9 @@ foreach($pilots as $pilot)
 			{
 				echo '<font color="red">Retired</font>';
 			}
-			elseif($res >= 03 )
+			elseif($res >= $days)
 			{
-				echo '<font color="orange">No Reports Over 3 Days</font>';
+				echo '<font color="orange">No Reports Over '.$days.' Days</font>';
 			}
 			else
 			{
