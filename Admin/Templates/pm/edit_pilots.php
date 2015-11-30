@@ -51,7 +51,7 @@ foreach($pilots as $pilot)
 		</td>
 	</tr>
 	<tr id="pilot_<?php echo $pilot->pilotid;?>" style="display:none">
-		<td colspan="9" align="center" style="width:100%">
+		<td colspan="13" align="center" style="width:100%">
 			<form method="post" action="<?php echo adminurl('/pilotmanager/savepro');?>">
 				<table>
 					<tr>
