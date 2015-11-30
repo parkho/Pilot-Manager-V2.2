@@ -3,7 +3,10 @@ td{
 	padding-left: 10px;
 }
 </style>
-
+<?php>
+$days = Config::Get('PILOT_INACTIVE_TIME');
+?>
+<ul><li><font color="green">You have set your pilot inactive time to <?php echo $days ;?> days.</font></li></ul>
 <table align="center" border="1" width="100%" cellpadding="0" cellspacing="0" >
 	<tr>
 		<td><b>ID</b></td>
@@ -16,7 +19,7 @@ td{
 		<td><b>Status</b></td> 
 	</tr>
 <?php
-			$days = Config::Get('PILOT_INACTIVE_TIME');
+		
 foreach($pilots as $pilot)
 	{
 			$pid = $pilot->pilotid;
