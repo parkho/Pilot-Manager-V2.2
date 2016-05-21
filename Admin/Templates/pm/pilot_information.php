@@ -28,7 +28,14 @@ foreach($pilots as $pilot)
 			$ptme = strtotime($pilot->lastpirep);
 			$trd = date("d", $ptme);
 			$dte = date("d");
-			$res = $dte - $trd;
+			if($dte < $trd)
+			{
+				$res = (30 - $trd) + $dte;
+			}
+			elseif($dte >= $trd)
+			{
+				$res = $dte - $trd;
+			}
 ?>
 	<tr>
 		<td><?php echo $pilot->code.''.$pilot->pilotid ;?></td>
@@ -42,8 +49,11 @@ foreach($pilots as $pilot)
 			<?php 
 			$date0 = date(DATE_FORMAT, strtotime($pilot->lastpirep));
 			$date1 = $pilot->lastpirep ;
-			
-			if($pilot->retired == "1")
+			if($pilot->lastpirep == 0)
+			{
+				echo '<font color="red">No Reports Since Registration</font>';
+			}
+			elseif($pilot->retired == "1")
 			{
 				echo '<font color="red">Retired</font>';
 			}
@@ -56,7 +66,7 @@ foreach($pilots as $pilot)
 				echo '<font color="green">Okay</font>';
 			}
 			?>
-		</td>			
+		</td>				
 	</tr>
 <?php
 }
