@@ -1,14 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.0.10.7
--- http://www.phpmyadmin.net
---
--- Host: localhost:3306
--- Generation Time: Nov 24, 2015 at 11:02 AM
--- Server version: 5.5.45-cll-lve
--- PHP Version: 5.4.31
-
---Table structure for table `pilot_manager`
---
 
 CREATE TABLE IF NOT EXISTS `pilot_manager` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -24,6 +13,3 @@ CREATE TABLE IF NOT EXISTS `pilot_manager` (
   UNIQUE KEY `pid` (`pid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
