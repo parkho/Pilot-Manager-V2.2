@@ -3,7 +3,7 @@ td{
 	padding-left: 10px;
 }
 </style>
-<?php>
+<?php
 $days = Config::Get('PILOT_INACTIVE_TIME');
 ?>
 <ul><li><font color="green">You have set your pilot inactive time to <?php echo $days ;?> days.</font></li></ul>
