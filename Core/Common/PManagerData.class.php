@@ -8,6 +8,27 @@ class PManagerData extends CodonData
 		return DB::get_results($sql);
 	}
 	
+	public static function InactivePilots()
+	{
+		$sql="SELECT * FROM phpvms_pilots WHERE retired = 3";
+		
+		return DB::get_results($sql);
+	}
+	
+	public static function PastDuePireps()
+	{
+		$sql="SELECT * FROM phpvms_pilots WHERE DATE_FORMAT(lastpirep,'%m-%d-%Y') < DATE_FORMAT(now(),'%m-%d-%Y')";
+		
+		return DB::get_results($sql);
+	}
+	
+	public static function NoPireps()
+	{
+		$sql="SELECT * FROM phpvms_pilots WHERE DATE_FORMAT(lastpirep,'%m-%d-%Y') = 0";
+		
+		return DB::get_results($sql);
+	}
+	
 	public static function getpilotbyemail($email)
 	{
 		$sql="SELECT * FROM phpvms_pilots WHERE email = '$email' ";
@@ -67,5 +88,6 @@ class PManagerData extends CodonData
 			$sql = "UPDATE pilot_manager SET blank='$sen' + '1', message='$message', datesent=NOW() WHERE pid='$pilot'";
 			DB::query($sql);
 		}
+	
 }
 ?>
