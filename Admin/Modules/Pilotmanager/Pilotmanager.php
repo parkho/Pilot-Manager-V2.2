@@ -8,9 +8,18 @@ class Pilotmanager extends CodonModule
 	
 	public function index() 
 	    {
-			$this->set('title', 'Pilot Manager');
-            $this->set('pilots', PilotData::getAllPilots());
-           	$this->show('/pm/pilot_manager.php');
+			$revision = trim(file_get_contents(CORE_PATH.'/version'));
+			if($revision != 'simpilot 5.5.2')
+				{
+					echo '<center>phpVMS Version Installed Is Not Compatible With This Module!</center><br />';
+					echo '<center>phpVMS Version Installed: '.$revision.'</center>';
+				}
+			else
+			{
+				$this->set('title', 'Pilot Manager');
+				$this->set('pilots', PilotData::getAllPilots());
+				$this->show('/pm/pilot_manager.php');
+			}
         }
         
         public function savepro()
